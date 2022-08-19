@@ -1,0 +1,75 @@
+
+<span *ngIf="login; else elseBlock" style="color: green; font-size: 30px ;">
+  login is: {{ login }} for User {{ regData.firstname }}<br
+/></span>
+
+<ng-template #elseBlock>
+  
+
+  <form class="container">
+
+    <span style="color: red"> You must login to continue</span> <br />
+  <br />
+    <h3>Passing Form data using reference style</h3>
+    <label for="Firstname"> firstname</label>
+    <input type="text" name="firstname" #firstname placeholder="firstname" />
+    <br /><br />
+
+    <label for=" Lastname">Lastname</label>
+    <input
+      type="text"
+      name="lastname"
+      placeholder="lastname"
+      #lastname
+    /><br /><br />
+
+    Gender
+    <br />
+    <label for="male">male</label>
+    <input type="radio" name="gender" #male value="male" id="male" />
+
+    <label for="female">female</label>
+    <input
+      type="radio"
+      name="gender"
+      id="female"
+      value="female"
+      #female
+    /><br />
+    <br />
+
+    <label for="Skils">Skills</label> <br />
+
+    <input type="checkbox" #angular name="angular" id="angular" />
+    <label for="Angular">Angular</label><br />
+    <input type="checkbox" #vue name="vue" id="vue" />
+    <label for="Vue">Vue</label> <br />
+    <input type="checkbox" #react name="react" id="react" />
+    <label for="React">React</label> <br /><br />
+
+    <label for="Qualification">Whats your qualification: </label>
+    <select id="qualification" name="qualification" #qualification>
+      <option value="BSC">BSC</option>
+      <option value="OND">OND</option>
+      <option value="HND">HND</option>
+    </select>
+    <br /><br />
+
+    <button
+      (click)="
+        validator(
+          firstname.value,
+          lastname.value,
+          qualification.value,
+          male.checked,
+          female.checked,
+          angular.checked,
+          vue.checked,
+          react.checked
+        )
+      "
+    >
+      Submit
+    </button>
+  </form>
+</ng-template>

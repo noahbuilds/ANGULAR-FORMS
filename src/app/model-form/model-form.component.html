@@ -1,0 +1,58 @@
+<form [formGroup]="fg" (ngSubmit)="formSubmit()" class="container">
+  <h3>REACTIVE FORM IN ANGULAR</h3>
+  <div>
+    <label for="Email"><strong>Your Email:</strong> </label>
+    <br>
+    <input
+      [ngStyle]="{
+        'border-color': email.invalid && email.touched ? 'red' : 'black'
+      }"
+      type="email"
+      name="email"
+      placeholder="email"
+      formControlName="emailControl"
+    /> <br>
+    <span *ngIf="email.invalid && email.touched" style="color: red">
+      Please supply a valid email
+    </span>
+  </div>
+  <br /><br />
+
+  <div>
+    <label for="Username">
+      <strong>Your Username (no special character allowed and min 3 characters): </strong></label
+    > <br>
+    <input
+      [ngStyle]="{
+        'border-color': username.invalid && username.touched ? 'red' : 'black'
+      }"
+      type="text"
+      placeholder="Username"
+      formControlName="usernameControl"
+    /> <br>
+    <span *ngIf="username.invalid && username.touched" style="color: red">
+      Please supply a valid username
+    </span>
+  </div>
+  <br /><br />
+
+  <div>
+    <label for="Password"> <strong> Password (min 5):</strong> </label>
+    <br>
+    <input
+      [ngStyle]="{
+        'border-color': password.invalid && password.touched ? 'red' : 'black'
+      }"
+      type="password"
+      placeholder="Password"
+      formControlName="passwordControl"
+    /> <br>
+    <span *ngIf="password.invalid && password.touched" style="color: red">
+      Please supply a valid password
+    </span>
+  </div>
+  <br />
+  <div>
+    <input type="submit" value="Submit" [disabled]="fg.invalid" />
+  </div>
+</form>
